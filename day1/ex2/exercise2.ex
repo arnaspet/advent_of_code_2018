@@ -10,10 +10,6 @@ defmodule Day1.Exercise2 do
     find_duplicate_frequency(list, 0, %{0 => true})
   end
 
-  def find_duplicate_frequency([], frequencies_occured) do
-    frequencies_occured
-  end
-
   def find_duplicate_frequency([head | tail], last_frequency, frequencies_occured) do
     new_freq = last_frequency + head
 
