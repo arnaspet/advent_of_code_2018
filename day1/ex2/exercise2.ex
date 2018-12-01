@@ -7,19 +7,19 @@ defmodule Day1.Exercise2 do
   end
 
   def find_duplicate_frequency(list) do
-    find_duplicate_frequency(list, [0])
+    find_duplicate_frequency(list, 0, %{0 => true})
   end
 
   def find_duplicate_frequency([], frequencies_occured) do
     frequencies_occured
   end
 
-  def find_duplicate_frequency([head | tail], frequencies_occured) do
-    new_freq = List.first(frequencies_occured) + head
+  def find_duplicate_frequency([head | tail], last_frequency, frequencies_occured) do
+    new_freq = last_frequency + head
 
-    case Enum.member?(frequencies_occured, new_freq) do
+    case Map.has_key?(frequencies_occured, new_freq) do
       true -> new_freq
-      false -> find_duplicate_frequency(tail ++ [head], [new_freq | frequencies_occured])
+      false -> find_duplicate_frequency(tail ++ [head], new_freq, Map.put_new(frequencies_occured, new_freq, true))
     end
   end
 
