@@ -16,4 +16,3 @@ defmodule Day1.Exercise1 do
     |> Stream.map(&(Kernel.elem(&1, 0)))
   end
 end
-
