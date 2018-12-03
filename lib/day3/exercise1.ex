@@ -10,12 +10,18 @@ defmodule AdventOfCode.Day3.Exercise1 do
   end
 
   def parse_claim(claim) do
-     @claim_pattern
-     |> Regex.named_captures(claim)
-     |> Enum.into(%{}, fn {key, val} -> {key, String.to_integer(val)} end)
+    @claim_pattern
+    |> Regex.named_captures(claim)
+    |> Enum.into(%{}, fn {key, val} -> {key, String.to_integer(val)} end)
   end
 
-  def convert_to_coordinates(%{"left" => left, "top" => top, "width" => width, "height" => height, "claim_id" => claim_id}) do
+  def convert_to_coordinates(%{
+        "left" => left,
+        "top" => top,
+        "width" => width,
+        "height" => height,
+        "claim_id" => claim_id
+      }) do
     %{
       :top_left => {left + 1, top + 1},
       :top_right => {left + width, top + 1},
@@ -25,7 +31,12 @@ defmodule AdventOfCode.Day3.Exercise1 do
     }
   end
 
-  def fill_grid_with_square(grid \\ %{}, %{top_left: {tlx, tly}, top_right: {trx, _}, bottom_left: {_, bly}, claim_id: id}) do
+  def fill_grid_with_square(grid \\ %{}, %{
+        top_left: {tlx, tly},
+        top_right: {trx, _},
+        bottom_left: {_, bly},
+        claim_id: id
+      }) do
     for x <- tlx..trx, y <- tly..bly, into: grid do
       case Map.has_key?(grid, {x, y}) do
         true -> {{x, y}, [id | grid[{x, y}]]}

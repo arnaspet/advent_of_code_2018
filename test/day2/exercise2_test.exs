@@ -9,7 +9,8 @@ defmodule AdventOfCode.Day2.Exercise2Test do
   end
 
   test "written case list" do
-    assert find_nearest_ids(["abcde", "fghij", "klmno", "pqrst", "fguij", "axcye", "wvxyz"]) == {"fghij", "fguij"}
+    assert find_nearest_ids(["abcde", "fghij", "klmno", "pqrst", "fguij", "axcye", "wvxyz"]) ==
+             {"fghij", "fguij"}
   end
 
   test "written case common letters" do

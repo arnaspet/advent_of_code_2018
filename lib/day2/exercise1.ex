@@ -5,9 +5,10 @@ defmodule AdventOfCode.Day2.Exercise1 do
   end
 
   def checksum(ids) do
-    {twos_count, threes_count} = ids
-    |> Enum.map(&score/1)
-    |> List.foldl({0, 0}, fn {x, y}, {acc_2, acc_3} -> {acc_2 + x, acc_3 + y}  end)
+    {twos_count, threes_count} =
+      ids
+      |> Enum.map(&score/1)
+      |> List.foldl({0, 0}, fn {x, y}, {acc_2, acc_3} -> {acc_2 + x, acc_3 + y} end)
 
     twos_count * threes_count
   end

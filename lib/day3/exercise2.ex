@@ -16,15 +16,15 @@ defmodule AdventOfCode.Day3.Exercise2 do
 
   def get_all_ids(grid) do
     grid
-    |> Enum.unzip
+    |> Enum.unzip()
     |> Kernel.elem(1)
-    |> Enum.concat
-    |> MapSet.new
+    |> Enum.concat()
+    |> MapSet.new()
   end
 
   def get_overlapping_ids(grid) do
     grid
-    |> Enum.reduce(MapSet.new, fn
+    |> Enum.reduce(MapSet.new(), fn
       {_, [_]}, acc -> acc
       {_, list}, acc -> for x <- list, into: acc, do: x
     end)
