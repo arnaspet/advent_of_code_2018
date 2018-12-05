@@ -1,4 +1,8 @@
 defmodule AdventOfCode.Utils.FileReader do
+  def get_day_string(day) do
+    File.read!("#{File.cwd!()}/data/day_#{day}.txt")
+  end
+
   def get_day_strings(day) do
     day
     |> read_file
