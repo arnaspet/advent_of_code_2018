@@ -45,7 +45,5 @@ defmodule AdventOfCode.Day5.Exercise1 do
     end
   end
 
-  defp reacts?(x, y) do
-    abs(x - y) === 32
-  end
+  defp reacts?(x, y), do: abs(x - y) === 32
 end
