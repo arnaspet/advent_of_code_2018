@@ -15,10 +15,25 @@ defmodule AdventOfCode.Day5.Exercise2 do
   """
   def find_shortest_possible_polymer(polymer) do
     polymer
-    |> get_unique_polymers
+    |> get_unique_polymers()
     |> Stream.map(fn x -> remove_type_of_polymer(polymer, x) end)
     |> Stream.map(&AdventOfCode.Day5.Exercise1.trigger_reaction/1)
     |> Enum.min_by(&String.length/1)
+  end
+
+  @doc """
+    gets polymer and finds shortest variation
+
+      iex>AdventOfCode.Day5.Exercise2.find_shortest_possible_polymer("dabAcCaCBAcCcaDA")
+      "daDA"
+  """
+  def find_shortest_possible_polymer_async(polymer) do
+    polymer
+    |> get_unique_polymers()
+    |> Stream.map(fn x -> remove_type_of_polymer(polymer, x) end)
+    |> Task.async_stream(&AdventOfCode.Day5.Exercise1.trigger_reaction/1)
+    |> Enum.min_by(fn {:ok, str} -> String.length(str) end)
+    |> elem(1)
   end
 
   @doc """
