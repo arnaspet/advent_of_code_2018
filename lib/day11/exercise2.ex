@@ -18,7 +18,6 @@ defmodule AdventOfCode.Day11.Exercise2 do
 
   def get_summed_area_table(grid, {width, height}) do
     Enum.reduce(1..width, %{}, fn x, acc ->
-      column_grid =
         Enum.reduce(1..height, acc, fn y, acc ->
           sum =
             get_safe_map_val(grid, {x, y}) + get_safe_map_val(acc, {x - 1, y}) +
