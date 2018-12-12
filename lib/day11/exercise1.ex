@@ -3,7 +3,8 @@ defmodule AdventOfCode.Day11.Exercise1 do
     generate_grid(5535)
     |> chunk_by_3x3_squares
     |> Enum.max_by(fn x -> x |> Map.values() |> Enum.sum() end)
-    |> Enum.at(0) |> elem(0)
+    |> Enum.at(0)
+    |> elem(0)
   end
 
   def generate_grid(serial) do
@@ -36,7 +37,7 @@ defmodule AdventOfCode.Day11.Exercise1 do
   """
   def get_power_level({x, y}, serial) do
     rack_id = x + 10
-    power_level = ((rack_id * y) + serial) * rack_id
+    power_level = (rack_id * y + serial) * rack_id
     hundreds_digit = power_level |> Integer.to_string() |> String.at(-3) |> String.to_integer()
 
     hundreds_digit - 5

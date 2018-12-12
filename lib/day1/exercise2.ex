@@ -12,8 +12,15 @@ defmodule AdventOfCode.Day1.Exercise2 do
     new_freq = last_frequency + head
 
     case Map.has_key?(frequencies_occured, new_freq) do
-      true -> new_freq
-      false -> find_duplicate_frequency(tail ++ [head], new_freq, Map.put_new(frequencies_occured, new_freq, true))
+      true ->
+        new_freq
+
+      false ->
+        find_duplicate_frequency(
+          tail ++ [head],
+          new_freq,
+          Map.put_new(frequencies_occured, new_freq, true)
+        )
     end
   end
 end

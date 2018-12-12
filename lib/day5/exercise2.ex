@@ -4,7 +4,7 @@ defmodule AdventOfCode.Day5.Exercise2 do
   def solve() do
     AdventOfCode.Utils.FileReader.get_day_string(5)
     |> find_shortest_possible_polymer
-    |> String.length
+    |> String.length()
   end
 
   @doc """
@@ -50,8 +50,8 @@ defmodule AdventOfCode.Day5.Exercise2 do
 
   defp get_unique_polymers(polymer) do
     polymer
-    |> String.to_charlist
-    |> MapSet.new
+    |> String.to_charlist()
+    |> MapSet.new()
     |> Enum.filter(&(&1 > 96))
   end
 end

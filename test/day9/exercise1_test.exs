@@ -6,9 +6,17 @@ defmodule AdventOfCode.Day9.Exercise1Test do
   test "places marble that are 1 and 2 marbles clockwise of current marble" do
     game = %Game{player_scores: [0], board: [0], current_marble_index: 0}
 
-    assert game = %Game{player_scores: [0], board: [0, 1], current_marble_index: 1} = place_marble(1, game)
-    assert game = %Game{player_scores: [0], board: [0, 2, 1], current_marble_index: 1} = place_marble(2, game)
-    assert game = %Game{player_scores: [0], board: [0, 2, 1, 3], current_marble_index: 3} = place_marble(3, game)
+    assert game =
+             %Game{player_scores: [0], board: [0, 1], current_marble_index: 1} =
+             place_marble(1, game)
+
+    assert game =
+             %Game{player_scores: [0], board: [0, 2, 1], current_marble_index: 1} =
+             place_marble(2, game)
+
+    assert game =
+             %Game{player_scores: [0], board: [0, 2, 1, 3], current_marble_index: 3} =
+             place_marble(3, game)
   end
 
   test "if marble is multiple of 23 add that marble to players score + 7 marbles back" do
@@ -29,7 +37,7 @@ defmodule AdventOfCode.Day9.Exercise1Test do
 
   test "written cases" do
     assert find_winning_score(10, 1618) == 8317
-    assert find_winning_score(13, 7999) == 146373
+    assert find_winning_score(13, 7999) == 146_373
     assert find_winning_score(17, 1104) == 2764
     assert find_winning_score(21, 6111) == 54718
     assert find_winning_score(30, 5807) == 37305
