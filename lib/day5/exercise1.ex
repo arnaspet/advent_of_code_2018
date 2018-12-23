@@ -1,4 +1,4 @@
-defmodule AdventOfCode.Day5.Exercise1 do
+ defmodule AdventOfCode.Day5.Exercise1 do
   def solve() do
     AdventOfCode.Utils.FileReader.get_day_string(5)
     |> trigger_reaction
